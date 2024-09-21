@@ -26,16 +26,24 @@ addbook.addEventListener("click",function(){
     div.innerHTML=`<h2>${booktitle.value}</h2>
             <h5>${bookauthor.value}</h5>
             <p>${bookdescription.value}</p>
-            <button id="del-notes">Delete</button>`
+            <button class="del-notes">Delete</button>`
     container.append(div)
+
+    div.querySelector(".del-notes").addEventListener("click",function(event){
+    event.target.parentElement.remove()
+})
+
     popupbox.style.display="none"
     popupoverlay.style.display="none"
     booktitle.value=""
     bookauthor.value=""
     bookdescription.value=""
-})
-var delelete=document.getElementById("del-notes")
 
-delelete.addEventListener("click",function(event){
-event.target.parentElement.remove()
+    
 })
+
+document.querySelectorAll(".del-notes").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.target.parentElement.remove();
+    });
+  });
